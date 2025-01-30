@@ -27,7 +27,7 @@ func TestKebabToUpperCamel(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.input, func(t *testing.T) {
-			got := kebabToUpperCamel(tt.input)
+			got := KebabToUpperCamel(tt.input)
 			assert.Equal(t, tt.want, got)
 		})
 	}

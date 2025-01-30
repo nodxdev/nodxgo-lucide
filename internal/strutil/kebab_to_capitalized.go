@@ -2,8 +2,8 @@ package strutil
 
 import "strings"
 
-// kebabToCapitalized converts a kebab-case string to a capitalized sentence.
-func kebabToCapitalized(str string) string {
+// KebabToCapitalized converts a kebab-case string to a capitalized sentence.
+func KebabToCapitalized(str string) string {
 	if str == "" {
 		return ""
 	}

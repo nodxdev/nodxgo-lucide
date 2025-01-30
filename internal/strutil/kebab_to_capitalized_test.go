@@ -20,7 +20,7 @@ func TestKebabToCapitalized(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.input, func(t *testing.T) {
-			got := kebabToCapitalized(tt.input)
+			got := KebabToCapitalized(tt.input)
 			assert.Equal(t, tt.want, got)
 		})
 	}

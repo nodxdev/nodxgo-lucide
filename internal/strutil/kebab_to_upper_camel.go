@@ -2,8 +2,8 @@ package strutil
 
 import "strings"
 
-// kebabToUpperCamel converts a kebab-case string to a UpperCamelCase string.
-func kebabToUpperCamel(str string) string {
+// KebabToUpperCamel converts a kebab-case string to a UpperCamelCase string.
+func KebabToUpperCamel(str string) string {
 	if str == "" {
 		return ""
 	}
