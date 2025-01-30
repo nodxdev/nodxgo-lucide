@@ -1,0 +1,15 @@
+# https://taskfile.dev
+
+version: "3"
+
+tasks:
+  build: # Runs the build cmd to generate the lucide package
+    cmds:
+      - go run ./cmd/build/.
+      - task fmt
+
+  fmt:
+    cmd: go fmt ./...
+
+  test:
+    cmd: go test ./...
