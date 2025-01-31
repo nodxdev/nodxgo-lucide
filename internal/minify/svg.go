@@ -5,12 +5,14 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"sync"
 )
 
 // SVGDir minifies all the SVG's inside a directory
 //
 // This function works only inside the devcontainer
-func SVGDir(dirPath string) error {
+func SVGDir(dirPath string, chunkSize int) error {
+	paths := []string{}
 	err := filepath.Walk(dirPath, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
@@ -24,11 +26,34 @@ func SVGDir(dirPath string) error {
 			return nil
 		}
 
-		return SVG(path)
+		paths = append(paths, path)
+		return nil
 	})
-
 	if err != nil {
 		return fmt.Errorf("error walking the path %s: %w", dirPath, err)
+	}
+
+	waitCh := make(chan bool, chunkSize)
+	errCh := make(chan error, len(paths))
+	wg := sync.WaitGroup{}
+	for _, path := range paths {
+		wg.Add(1)
+		waitCh <- true
+		go func() {
+			errCh <- SVG(path)
+			<-waitCh
+			wg.Done()
+		}()
+	}
+
+	wg.Wait()
+	close(waitCh)
+	close(errCh)
+
+	for err := range errCh {
+		if err != nil {
+			return err
+		}
 	}
 
 	return nil
