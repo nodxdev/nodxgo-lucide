@@ -3,13 +3,20 @@
 version: "3"
 
 tasks:
-  build: # Runs the build cmd to generate the lucide package
+  codegen:
+    desc: Run the code generator for the project and then format the code
     cmds:
-      - go run ./cmd/build/.
+      - go run ./cmd/codegen/.
       - task fmt
 
   fmt:
-    cmd: go fmt ./...
+    desc: Run all the project formatters
+    cmds:
+      - deno fmt
+      - go fmt ./...
 
   test:
-    cmd: go test ./...
+    desc: Run all the project tests
+    cmds:
+      - deno test
+      - go test ./...
