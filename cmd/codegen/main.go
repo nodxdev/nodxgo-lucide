@@ -32,23 +32,27 @@ func main() {
 	defer os.RemoveAll(tempDir)
 
 	// Download icons
+	log.Println("Downloading Lucide icons...")
 	iconsFile := path.Join(tempDir, "icons.zip")
 	if err := fileutil.DownloadFile(iconsURL, iconsFile); err != nil {
 		log.Fatalf("error downloading %s: %v", iconsURL, err)
 	}
 
 	// Unzip icons
+	log.Println("Unzipping Lucide icons...")
 	if err := fileutil.Unzip(iconsFile, tempDir); err != nil {
 		log.Fatal(err)
 	}
 
 	// Minify SVG icons
+	log.Println("Minifying Lucide icons...")
 	iconsDir := path.Join(tempDir, "lucide-"+version, "icons")
 	if err := minify.SVGDir(iconsDir, 100); err != nil {
 		log.Fatal(err)
 	}
 
 	// Read icons folder
+	log.Println("Generating Go code from Lucide icons...")
 	files, err := os.ReadDir(iconsDir)
 	if err != nil {
 		log.Fatal(err)
@@ -91,6 +95,7 @@ func main() {
 	}
 	iconsFileContents := generateIconsFile(components)
 	infoFileContents := generateInfoFile(infos)
+	log.Println("Writing Go code to files...")
 
 	// Write icons Go code to file
 	err = os.WriteFile(iconsOutputFilePath, iconsFileContents, os.ModePerm)
