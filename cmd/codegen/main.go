@@ -116,5 +116,5 @@ func main() {
 		log.Fatal(err)
 	}
 
-	log.Println("✅ Lucide icons generated successfully!")
+	log.Println("Lucide icons generated successfully!")
 }
