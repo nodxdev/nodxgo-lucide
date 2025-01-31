@@ -55,3 +55,16 @@ Deno.test("minify HTML", () => {
   assertEquals(destCont, want);
   Deno.removeSync(tempDir, { recursive: true });
 });
+
+Deno.test("minify HTML in same file", () => {
+  const tempDir = Deno.makeTempDirSync();
+  const srcPath = `${tempDir}/src.html`;
+  const destPath = `${tempDir}/src.html`;
+  Deno.writeTextFileSync(srcPath, src);
+
+  runScript(srcPath, destPath);
+
+  const destCont = Deno.readTextFileSync(destPath);
+  assertEquals(destCont, want);
+  Deno.removeSync(tempDir, { recursive: true });
+});
