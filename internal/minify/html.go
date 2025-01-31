@@ -40,8 +40,7 @@ func HTMLDir(dirPath string) error {
 func HTML(filePath string) error {
 	scriptPath := "/workspaces/nodxgo-lucide/internal/minify/html.ts"
 
-	cmd := exec.Command(scriptPath, filePath, filePath)
-
+	cmd := exec.Command("deno", "run", "-A", scriptPath, filePath, filePath)
 	err := cmd.Run()
 	if err != nil {
 		return fmt.Errorf("error minifying file %s: %w", filePath, err)
