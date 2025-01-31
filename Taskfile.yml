@@ -18,5 +18,5 @@ tasks:
   test:
     desc: Run all the project tests
     cmds:
-      - deno test
+      - deno test -A
       - go test ./...
