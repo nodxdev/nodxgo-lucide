@@ -1,0 +1,6 @@
+Every time a release is made, the following must be ensured:
+
+- The Lucide version is updated
+- The codegen is executed
+- The icon count in README.md is updated
+- The Lucide version is added to release notes
