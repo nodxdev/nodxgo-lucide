@@ -25,7 +25,7 @@ const want =
 
 function runScript(srcPath: string, destPath: string) {
   const currentDir = new URL(".", import.meta.url).pathname;
-  const scriptPath = path.join(currentDir, "html.ts");
+  const scriptPath = path.join(currentDir, "svg.ts");
 
   const cmd = new Deno.Command("deno", {
     args: [
@@ -43,10 +43,10 @@ function runScript(srcPath: string, destPath: string) {
   }
 }
 
-Deno.test("minify HTML", () => {
+Deno.test("minify svg", () => {
   const tempDir = Deno.makeTempDirSync();
-  const srcPath = `${tempDir}/src.html`;
-  const destPath = `${tempDir}/dest.html`;
+  const srcPath = `${tempDir}/src.svg`;
+  const destPath = `${tempDir}/dest.svg`;
   Deno.writeTextFileSync(srcPath, src);
 
   runScript(srcPath, destPath);
@@ -56,10 +56,10 @@ Deno.test("minify HTML", () => {
   Deno.removeSync(tempDir, { recursive: true });
 });
 
-Deno.test("minify HTML in same file", () => {
+Deno.test("minify svg in same file", () => {
   const tempDir = Deno.makeTempDirSync();
-  const srcPath = `${tempDir}/src.html`;
-  const destPath = `${tempDir}/src.html`;
+  const srcPath = `${tempDir}/src.svg`;
+  const destPath = `${tempDir}/src.svg`;
   Deno.writeTextFileSync(srcPath, src);
 
   runScript(srcPath, destPath);

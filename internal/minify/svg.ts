@@ -4,7 +4,7 @@
 import { minify } from "npm:html-minifier@4.0.0";
 
 if (Deno.args.length !== 2) {
-  console.error("Usage: html.ts <source-file> <output-file>");
+  console.error("Usage: svg.ts <source-file> <output-file>");
   console.log("The source file and output file can be the same.");
   Deno.exit(1);
 }
@@ -19,4 +19,4 @@ const destCont = minify(srcCont, {
 });
 Deno.writeTextFileSync(destPath, destCont);
 
-console.log("Minified HTML written to", destPath);
+console.log("Minified file written to", destPath);

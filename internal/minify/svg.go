@@ -7,10 +7,10 @@ import (
 	"path/filepath"
 )
 
-// HTMLDir minifies all the HTML's inside a directory
+// SVGDir minifies all the SVG's inside a directory
 //
 // This function works only inside the devcontainer
-func HTMLDir(dirPath string) error {
+func SVGDir(dirPath string) error {
 	err := filepath.Walk(dirPath, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
@@ -24,7 +24,7 @@ func HTMLDir(dirPath string) error {
 			return nil
 		}
 
-		return HTML(path)
+		return SVG(path)
 	})
 
 	if err != nil {
@@ -34,11 +34,11 @@ func HTMLDir(dirPath string) error {
 	return nil
 }
 
-// HTML minifies an HTML file
+// SVG minifies an SVG file
 //
 // This function works only inside the devcontainer
-func HTML(filePath string) error {
-	scriptPath := "/workspaces/nodxgo-lucide/internal/minify/html.ts"
+func SVG(filePath string) error {
+	scriptPath := "/workspaces/nodxgo-lucide/internal/minify/svg.ts"
 
 	cmd := exec.Command("deno", "run", "-A", scriptPath, filePath, filePath)
 	err := cmd.Run()
