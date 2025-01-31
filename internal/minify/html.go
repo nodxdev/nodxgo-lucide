@@ -8,6 +8,8 @@ import (
 )
 
 // HTMLDir minifies all the HTML's inside a directory
+//
+// This function works only inside the devcontainer
 func HTMLDir(dirPath string) error {
 	err := filepath.Walk(dirPath, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
@@ -33,8 +35,9 @@ func HTMLDir(dirPath string) error {
 }
 
 // HTML minifies an HTML file
+//
+// This function works only inside the devcontainer
 func HTML(filePath string) error {
-	// This should be executed from dev container
 	scriptPath := "/workspaces/nodxgo-lucide/internal/minify/html.ts"
 
 	cmd := exec.Command(scriptPath, filePath, filePath)
