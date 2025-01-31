@@ -15,6 +15,12 @@ tasks:
       - deno fmt
       - go fmt ./...
 
+  lint:
+    desc: Run all the project linters
+    cmds:
+      - deno lint
+      - golangci-lint run ./...
+
   test:
     desc: Run all the project tests
     cmds:
