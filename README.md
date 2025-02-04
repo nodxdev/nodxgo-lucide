@@ -1,10 +1,19 @@
 # 🌀 Lucide icons for NodX Go
 
 <a href="https://pkg.go.dev/github.com/nodxdev/nodxgo-lucide">
-	<img src="https://pkg.go.dev/badge/github.com/nodxdev/nodxgo-lucide.svg" alt="Go Reference">
+  <img src="https://pkg.go.dev/badge/github.com/nodxdev/nodxgo-lucide" alt="Go Reference"/>
 </a>
-<a href="https://github.com/nodxdev/nodxgo-lucide/releases" target="_blank" rel="noopener">
-	<img src="https://img.shields.io/github/release/nodxdev/nodxgo-lucide.svg" alt="Latest releases" />
+<a href="https://goreportcard.com/report/nodxdev/nodxgo-lucide">
+  <img src="https://goreportcard.com/badge/nodxdev/nodxgo-lucide" alt="Go Report Card"/>
+</a>
+<a href="https://github.com/nodxdev/nodxgo-lucide/releases/latest">
+  <img src="https://img.shields.io/github/release/nodxdev/nodxgo-lucide.svg" alt="Release Version"/>
+</a>
+<a href="LICENSE">
+  <img src="https://img.shields.io/github/license/nodxdev/nodxgo-lucide.svg" alt="License"/>
+</a>
+<a href="https://github.com/nodxdev/nodxgo-lucide">
+  <img src="https://img.shields.io/github/stars/nodxdev/nodxgo-lucide?style=flat&label=github+stars"/>
 </a>
 
 <br/>
